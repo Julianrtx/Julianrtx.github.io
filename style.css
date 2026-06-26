@@ -138,13 +138,26 @@ transition:.18s ease;
 }
 
 .contact-btn{
+height:42px;
+padding:0 16px;
 background:var(--green);
 color:white;
-padding:0 18px;
-height:44px;
+font-size:12px;
+font-weight:600;
+border:none;
+border-radius:6px;
+display:flex;
+align-items:center;
+justify-content:center;
 white-space:nowrap;
 flex-shrink:0;
-border-radius:6px;
+transition:.18s ease;
+max-width:190px;
+}
+
+.contact-btn:hover{
+transform:translateY(-2px);
+background:#244b22;
 }
 
 .primary-btn{
