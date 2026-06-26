@@ -993,7 +993,28 @@ color:#555;
 /* RESPONSIVE */
 /* ========================= */
 
-@media(max-width:1024px){
+@media(max-width:1200px){
+
+.hero-content,
+.retail-content{
+width:70%;
+}
+
+.cert-grid{
+grid-template-columns:repeat(3,1fr);
+}
+
+}
+
+/* ========================= */
+/* TABLET */
+/* ========================= */
+
+@media(max-width:992px){
+
+.navbar{
+padding:20px 40px;
+}
 
 .hero-content,
 .retail-content{
@@ -1003,7 +1024,23 @@ padding:0 40px;
 
 .hero-content h1,
 .retail-content h1{
-font-size:48px;
+font-size:52px;
+line-height:1.1;
+}
+
+.hero-content p,
+.retail-content p{
+width:100%;
+}
+
+.retail-intro{
+flex-direction:column;
+padding:80px 40px;
+}
+
+.retail-intro-left,
+.retail-intro-right{
+width:100%;
 }
 
 .retail-tech{
@@ -1015,17 +1052,31 @@ flex-direction:column;
 width:100%;
 }
 
+.retail-tech-image img{
+height:450px;
+}
+
+.retail-tech-content{
+padding:60px 40px;
+}
+
 .retail-product{
 flex-direction:column;
 }
 
 .retail-product img{
 width:100%;
-height:300px;
+height:320px;
 }
 
 .retail-product-info{
 width:100%;
+padding:40px;
+}
+
+.product-specs{
+flex-wrap:wrap;
+gap:20px;
 }
 
 .cert-grid{
@@ -1036,84 +1087,228 @@ grid-template-columns:repeat(2,1fr);
 grid-template-columns:1fr;
 }
 
+.retail-table{
+overflow-x:auto;
 }
 
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
 @media(max-width:768px){
+
+html,
+body{
+overflow-x:hidden;
+}
 
 .navbar{
 padding:20px;
 flex-direction:column;
+align-items:center;
 gap:20px;
+}
+
+.logo{
+text-align:center;
 }
 
 nav{
+display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+gap:18px;
 }
 
-.hero{
+nav a{
+font-size:14px;
+}
+
+.contact-btn{
+width:100%;
+max-width:300px;
+}
+
+/* HERO */
+
+.hero,
+.retail-hero{
 height:auto;
-padding:140px 0 80px;
+padding:140px 0 90px;
+}
+
+.hero-content,
+.retail-content{
+padding:0 24px;
+width:100%;
 }
 
 .hero-content h1,
 .retail-content h1{
 font-size:38px;
+line-height:1.1;
 }
 
-.hero-content,
-.retail-content{
-padding:0 25px;
-}
-
-.retail-intro{
-flex-direction:column;
-padding:70px 25px;
-}
-
-.retail-intro-left,
-.retail-intro-right{
+.hero-content p,
+.retail-content p{
+font-size:16px;
+line-height:1.7;
 width:100%;
 }
 
+.retail-buttons{
+flex-direction:column;
+width:100%;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+}
+
+/* SECTIONS */
+
+.retail-intro,
 .retail-products,
 .retail-table,
-.certifications{
-padding:70px 25px;
+.certifications,
+.categories,
+.about,
+.technology{
+padding:70px 24px;
 }
 
-.retail-tech-content{
-padding:50px 25px;
-}
+/* TITLES */
 
+.retail-intro-left h2,
 .retail-tech-content h2,
-.retail-intro-left h2{
-font-size:36px;
+.retail-products h2,
+.retail-table h2,
+.certifications h2{
+font-size:34px;
+line-height:1.2;
 }
 
-.cert-grid{
-grid-template-columns:1fr;
+/* INFO BOXES */
+
+.info-box{
+padding:28px;
 }
 
 .info-box h3{
 font-size:34px;
 }
 
-.retail-cta h2{
-font-size:36px;
+/* PRODUCTS */
+
+.retail-product{
+border:none;
+box-shadow:none;
 }
+
+.retail-product img{
+height:250px;
+}
+
+.retail-product-info{
+padding:30px 24px;
+}
+
+.retail-product-info h3{
+font-size:32px;
+}
+
+.product-specs{
+flex-direction:column;
+gap:18px;
+}
+
+/* TECHNOLOGY */
+
+.retail-tech-image img{
+height:300px;
+}
+
+.retail-tech-content{
+padding:50px 24px;
+}
+
+/* CERTIFICATIONS */
+
+.cert-grid{
+grid-template-columns:1fr;
+}
+
+.cert-card{
+padding:35px 24px;
+}
+
+/* TABLE */
+
+.retail-table table{
+min-width:700px;
+}
+
+/* CTA */
 
 .retail-cta{
-padding:50px 25px;
 height:auto;
+padding:70px 24px;
 }
 
+.retail-cta h2{
+font-size:34px;
+line-height:1.2;
+}
+
+.retail-cta p{
+width:100%;
+font-size:16px;
+}
+
+/* FOOTER */
+
 footer{
-padding:50px 25px;
+padding:50px 24px;
 flex-direction:column;
 gap:30px;
 text-align:center;
+}
+
+}
+
+/* ========================= */
+/* SMALL MOBILE */
+/* ========================= */
+
+@media(max-width:480px){
+
+.hero-content h1,
+.retail-content h1{
+font-size:32px;
+}
+
+.retail-intro-left h2,
+.retail-tech-content h2,
+.retail-products h2,
+.retail-table h2,
+.certifications h2,
+.retail-cta h2{
+font-size:28px;
+}
+
+.retail-product-info h3{
+font-size:26px;
+}
+
+nav{
+gap:14px;
+}
+
+nav a{
+font-size:13px;
 }
 
 }
