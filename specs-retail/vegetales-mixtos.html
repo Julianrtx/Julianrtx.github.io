@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vegetales Mixtos | FROUND</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+:root{
+--green:#2E5E2B;
+--green-light:#7AB648;
+--dark:#171717;
+--text:#5f5f5f;
+--border:#e9e9e9;
+}
+
+html{
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#fff;
+color:#222;
+overflow-x:hidden;
+}
+
+img{
+width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+}
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:74px;
+padding:0 34px;
+display:flex;
+align-items:center;
+background:white;
+border-bottom:1px solid #ececec;
+z-index:9999;
+}
+
+.logo{
+display:flex;
+flex-direction:column;
+line-height:1;
+}
+
+.logo h1{
+font-size:24px;
+font-weight:800;
+color:var(--green);
+margin-bottom:4px;
+}
+
+.logo span{
+font-size:10px;
+color:#777;
+}
+
+nav{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+gap:18px;
+}
+
+nav a{
+font-size:12px;
+font-weight:600;
+color:#222;
+transition:.2s;
+}
+
+nav a:hover{
+color:var(--green);
+}
+
+.contact-btn{
+margin-left:auto;
+height:38px;
+padding:0 18px;
+background:var(--green);
+color:white;
+border:none;
+border-radius:6px;
+font-size:11px;
+font-weight:700;
+cursor:pointer;
+}
+
+.hero{
+position:relative;
+min-height:70vh;
+display:flex;
+align-items:center;
+padding:140px 70px 80px;
+background:
+url('https://images.unsplash.com/photo-1603048719539-9ecb4f4b0a71?q=80&w=1800&auto=format&fit=crop')
+center/cover;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(
+120deg,
+rgba(0,0,0,.82),
+rgba(0,0,0,.45)
+);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+max-width:760px;
+}
+
+.product-tag{
+display:inline-flex;
+padding:10px 16px;
+background:rgba(255,255,255,.12);
+border-radius:100px;
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+color:white;
+margin-bottom:24px;
+}
+
+.hero h2{
+font-size:74px;
+line-height:.92;
+font-weight:800;
+letter-spacing:-3px;
+color:white;
+margin-bottom:26px;
+}
+
+.hero p{
+font-size:17px;
+line-height:1.9;
+color:#ededed;
+max-width:620px;
+}
+
+.specs-section{
+padding:90px 70px;
+background:#fafafa;
+}
+
+.specs-header{
+margin-bottom:50px;
+}
+
+.specs-header h2{
+font-size:50px;
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:18px;
+color:var(--dark);
+}
+
+.specs-header p{
+font-size:16px;
+line-height:1.9;
+color:var(--text);
+max-width:700px;
+}
+
+.specs-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+.spec-card{
+background:white;
+padding:34px;
+border-radius:22px;
+border:1px solid var(--border);
+transition:.2s;
+}
+
+.spec-card:hover{
+transform:translateY(-6px);
+box-shadow:0 14px 35px rgba(0,0,0,.06);
+}
+
+.spec-card h3{
+font-size:22px;
+margin-bottom:20px;
+color:var(--green);
+}
+
+.spec-list{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.spec-item{
+display:flex;
+justify-content:space-between;
+gap:20px;
+padding-bottom:14px;
+border-bottom:1px solid #efefef;
+}
+
+.spec-name{
+font-size:14px;
+font-weight:600;
+color:#444;
+}
+
+.spec-value{
+font-size:14px;
+color:#666;
+text-align:right;
+}
+
+.extra-info{
+padding:0 70px 90px;
+background:#fafafa;
+}
+
+.info-box{
+background:white;
+padding:40px;
+border-radius:22px;
+border:1px solid var(--border);
+}
+
+.info-box h3{
+font-size:28px;
+margin-bottom:20px;
+color:var(--dark);
+}
+
+.info-box p{
+font-size:15px;
+line-height:1.9;
+color:var(--text);
+margin-bottom:18px;
+}
+
+.back-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:46px;
+padding:0 24px;
+background:var(--green);
+color:white;
+border-radius:8px;
+font-size:13px;
+font-weight:600;
+margin-top:20px;
+transition:.2s;
+}
+
+.back-btn:hover{
+background:#244b22;
+}
+
+footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:50px 70px;
+background:#111;
+}
+
+.footer-logo h2{
+font-size:28px;
+margin-bottom:10px;
+color:white;
+}
+
+.footer-logo span{
+font-size:13px;
+color:#bdbdbd;
+}
+
+.footer-info{
+text-align:right;
+}
+
+.footer-info p{
+font-size:14px;
+line-height:1.9;
+color:#d2d2d2;
+}
+
+@media(max-width:992px){
+
+.navbar{
+height:auto;
+padding:18px 24px;
+flex-direction:column;
+gap:16px;
+}
+
+nav{
+position:static;
+transform:none;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+.hero{
+padding:190px 40px 90px;
+}
+
+.hero h2{
+font-size:54px;
+}
+
+.specs-section,
+.extra-info{
+padding-left:40px;
+padding-right:40px;
+}
+
+.specs-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:768px){
+
+.hero{
+padding:190px 24px 80px;
+}
+
+.hero h2{
+font-size:40px;
+letter-spacing:-1px;
+}
+
+.hero p{
+font-size:15px;
+}
+
+.specs-section,
+.extra-info{
+padding-left:24px;
+padding-right:24px;
+}
+
+.specs-header h2{
+font-size:36px;
+}
+
+.spec-card{
+padding:26px;
+}
+
+.spec-item{
+flex-direction:column;
+align-items:flex-start;
+}
+
+.spec-value{
+text-align:left;
+}
+
+footer{
+flex-direction:column;
+gap:28px;
+text-align:center;
+padding:45px 24px;
+}
+
+.footer-info{
+text-align:center;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="navbar">
+
+<div class="logo">
+<h1>FROUND</h1>
+<span>Foods Around The World</span>
+</div>
+
+<nav>
+
+<a href="../index.html">Inicio</a>
+<a href="../retail.html">Retail</a>
+<a href="#especificaciones">Especificaciones</a>
+<a href="#contacto">Contacto</a>
+
+</nav>
+
+<button class="contact-btn">
+Equipo comercial
+</button>
+
+</header>
+
+<section class="hero">
+
+<div class="overlay"></div>
+
+<div class="hero-content">
+
+<span class="product-tag">
+PRODUCTO RETAIL
+</span>
+
+<h2>
+VEGETALES
+MIXTOS
+</h2>
+
+<p>
+Mezcla de vegetales congelados IQF
+desarrollada para supermercados,
+distribuidores y mercados
+internacionales de alto volumen.
+</p>
+
+</div>
+
+</section>
+
+<section class="specs-section" id="especificaciones">
+
+<div class="specs-header">
+
+<h2>
+ESPECIFICACIONES
+DEL PRODUCTO
+</h2>
+
+<p>
+Información técnica y comercial del
+producto orientada a clientes retail,
+cadenas internacionales y distribuidores.
+</p>
+
+</div>
+
+<div class="specs-grid">
+
+<div class="spec-card">
+
+<h3>Información General</h3>
+
+<div class="spec-list">
+
+<div class="spec-item">
+<span class="spec-name">Producto</span>
+<span class="spec-value">Vegetales Mixtos IQF</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Categoría</span>
+<span class="spec-value">Vegetales Congelados</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Proceso</span>
+<span class="spec-value">IQF</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Origen</span>
+<span class="spec-value">Colombia</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Vida útil</span>
+<span class="spec-value">24 meses</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="spec-card">
+
+<h3>Empaque y Almacenamiento</h3>
+
+<div class="spec-list">
+
+<div class="spec-item">
+<span class="spec-name">Presentación</span>
+<span class="spec-value">Bolsa Retail</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Peso Neto</span>
+<span class="spec-value">400g / 1kg</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Temperatura</span>
+<span class="spec-value">-18°C</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Conservación</span>
+<span class="spec-value">Cadena de frío</span>
+</div>
+
+<div class="spec-item">
+<span class="spec-name">Mercado</span>
+<span class="spec-value">Retail Internacional</span>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="extra-info">
+
+<div class="info-box">
+
+<h3>
+Calidad y procesamiento
+</h3>
+
+<p>
+La mezcla de vegetales FROUND es
+procesada mediante tecnología IQF
+para conservar color, textura y valor
+nutricional durante toda la cadena
+de distribución internacional.
+</p>
+
+<p>
+Nuestro sistema de producción asegura
+uniformidad, inocuidad y cumplimiento
+de estándares internacionales para
+supermercados y clientes retail.
+</p>
+
+<a href="../retail.html" class="back-btn">
+Volver a Retail
+</a>
+
+</div>
+
+</section>
+
+<footer id="contacto">
+
+<div class="footer-logo">
+
+<h2>FROUND</h2>
+
+<span>
+Foods Around The World
+</span>
+
+</div>
+
+<div class="footer-info">
+
+<p>info@fround.com</p>
+<p>+57 300 000 0000</p>
+<p>Barranquilla, Colombia</p>
+
+</div>
+
+</footer>
+
+</body>
+</html>
