@@ -1312,3 +1312,476 @@ font-size:13px;
 }
 
 }
+/* ================================================= */
+/* PROFESSIONAL UI IMPROVEMENTS */
+/* ================================================= */
+
+:root{
+--green:#2E5E2B;
+--dark:#1F3F1D;
+--light:#f7f7f7;
+--accent:#6FA843;
+--border:#e5e5e5;
+--text:#444;
+}
+
+/* GLOBAL */
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+overflow-x:hidden;
+background:#ffffff;
+}
+
+section{
+scroll-margin-top:120px;
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+}
+
+/* ================================================= */
+/* NAVBAR */
+/* ================================================= */
+
+.navbar{
+position:sticky;
+top:0;
+z-index:9999;
+backdrop-filter:blur(0px);
+background:rgba(255,255,255,0.97);
+transition:0.3s ease;
+}
+
+nav a{
+position:relative;
+padding-bottom:6px;
+transition:0.3s ease;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:var(--accent);
+transition:0.3s ease;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+nav a:hover{
+color:var(--green);
+}
+
+/* ================================================= */
+/* BUTTONS */
+/* ================================================= */
+
+.primary-btn,
+.secondary-btn,
+.contact-btn,
+.product-btn,
+.retail-cta button{
+transition:all 0.3s ease;
+}
+
+.primary-btn:hover,
+.contact-btn:hover,
+.product-btn:hover,
+.retail-cta button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+}
+
+.secondary-btn:hover{
+background:white;
+color:var(--green);
+}
+
+/* ================================================= */
+/* HERO */
+/* ================================================= */
+
+.hero::before,
+.retail-hero::before{
+content:'';
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+to right,
+rgba(0,0,0,0.72),
+rgba(0,0,0,0.35)
+);
+z-index:1;
+}
+
+.overlay,
+.retail-overlay{
+display:none;
+}
+
+.hero-content,
+.retail-content{
+animation:heroFade 1s ease;
+}
+
+@keyframes heroFade{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+/* ================================================= */
+/* HERO STATS */
+/* ================================================= */
+
+.stat-card{
+transition:0.35s ease;
+border-radius:10px;
+overflow:hidden;
+}
+
+.stat-card:hover{
+transform:translateY(-10px);
+background:rgba(255,255,255,0.12);
+}
+
+/* ================================================= */
+/* PROCESS */
+/* ================================================= */
+
+.process-item{
+transition:0.35s ease;
+border:1px solid transparent;
+}
+
+.process-item:hover{
+transform:translateY(-8px);
+border-color:#dcdcdc;
+background:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.06);
+}
+
+/* ================================================= */
+/* CATEGORY CARDS */
+/* ================================================= */
+
+.category-card{
+border-radius:10px;
+overflow:hidden;
+transition:0.4s ease;
+}
+
+.category-card::before{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.72),
+rgba(0,0,0,0.18)
+);
+z-index:1;
+transition:0.4s ease;
+}
+
+.category-overlay{
+display:none;
+}
+
+.category-content{
+z-index:3;
+}
+
+.category-card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 40px rgba(0,0,0,0.18);
+}
+
+.category-card:hover::before{
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.82),
+rgba(0,0,0,0.28)
+);
+}
+
+/* ================================================= */
+/* MAP */
+/* ================================================= */
+
+.map-right img{
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* ================================================= */
+/* CERTIFICATIONS */
+/* ================================================= */
+
+.cert-card{
+transition:0.35s ease;
+border-radius:10px;
+}
+
+.cert-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+.cert-icon{
+border-radius:50%;
+transition:0.3s ease;
+}
+
+.cert-card:hover .cert-icon{
+transform:scale(1.08);
+background:#f0f5ed;
+}
+
+/* ================================================= */
+/* RETAIL PRODUCTS */
+/* ================================================= */
+
+.retail-product{
+transition:0.35s ease;
+border-radius:12px;
+}
+
+.retail-product:hover{
+transform:translateY(-6px);
+box-shadow:0 20px 40px rgba(0,0,0,0.08);
+}
+
+.retail-product img{
+transition:transform 0.5s ease;
+}
+
+.retail-product:hover img{
+transform:scale(1.04);
+}
+
+/* ================================================= */
+/* INFO BOXES */
+/* ================================================= */
+
+.info-box{
+transition:0.35s ease;
+}
+
+.info-box:hover{
+transform:translateX(8px);
+background:#f3f3f3;
+}
+
+/* ================================================= */
+/* BENEFITS */
+/* ================================================= */
+
+.benefit{
+transition:0.3s ease;
+border-left:0px solid var(--green);
+}
+
+.benefit:hover{
+border-left:5px solid var(--green);
+padding-left:28px;
+background:#f1f4ef;
+}
+
+/* ================================================= */
+/* TABLES */
+/* ================================================= */
+
+.retail-table table,
+.spec-table{
+overflow:hidden;
+border-radius:10px;
+}
+
+.retail-table tr{
+transition:0.2s ease;
+}
+
+.retail-table tr:hover td{
+background:#fafafa;
+}
+
+/* ================================================= */
+/* CTA */
+/* ================================================= */
+
+.retail-cta{
+position:relative;
+overflow:hidden;
+}
+
+.retail-cta::before{
+content:'';
+position:absolute;
+width:500px;
+height:500px;
+background:rgba(255,255,255,0.04);
+border-radius:50%;
+top:-250px;
+right:-150px;
+}
+
+.retail-cta h2,
+.retail-cta p,
+.retail-cta button{
+position:relative;
+z-index:2;
+}
+
+/* ================================================= */
+/* FOOTER */
+/* ================================================= */
+
+footer{
+border-top:1px solid rgba(255,255,255,0.08);
+}
+
+/* ================================================= */
+/* MOBILE FIXES */
+/* ================================================= */
+
+@media(max-width:768px){
+
+.hero-left,
+.hero-content,
+.retail-content{
+width:100%;
+}
+
+.hero-left h2,
+.retail-content h1{
+font-size:38px !important;
+}
+
+.hero-left p,
+.retail-content p{
+width:100%;
+font-size:16px;
+}
+
+.hero-buttons,
+.retail-buttons{
+flex-direction:column;
+}
+
+.primary-btn,
+.secondary-btn{
+width:100%;
+}
+
+.process-grid{
+grid-template-columns:1fr !important;
+}
+
+.categories-grid{
+grid-template-columns:1fr !important;
+}
+
+.map-section{
+flex-direction:column;
+padding:70px 24px;
+gap:40px;
+}
+
+.map-left,
+.map-right{
+width:100%;
+}
+
+.hero-stats{
+flex-direction:column;
+width:100%;
+}
+
+.stat-card{
+width:100%;
+}
+
+.retail-product-info h3{
+font-size:30px;
+}
+
+.retail-tech-content h2,
+.retail-intro-left h2,
+.retail-products h2,
+.certifications h2,
+.retail-table h2{
+font-size:34px;
+}
+
+}
+
+/* ================================================= */
+/* SMALL MOBILE */
+/* ================================================= */
+
+@media(max-width:480px){
+
+.navbar{
+padding:18px;
+}
+
+nav{
+gap:12px;
+}
+
+nav a{
+font-size:13px;
+}
+
+.hero-left h2,
+.retail-content h1{
+font-size:31px !important;
+}
+
+.retail-product-info{
+padding:24px;
+}
+
+.retail-product-info h3{
+font-size:24px;
+}
+
+.cert-card{
+padding:30px 22px;
+}
+
+.retail-tech-content,
+.retail-products,
+.retail-table,
+.certifications,
+.categories{
+padding-left:20px;
+padding-right:20px;
+}
+
+}
