@@ -140,8 +140,11 @@ transition:.18s ease;
 .contact-btn{
 background:var(--green);
 color:white;
-min-width:220px;
+padding:0 18px;
+height:44px;
 white-space:nowrap;
+flex-shrink:0;
+border-radius:6px;
 }
 
 .primary-btn{
