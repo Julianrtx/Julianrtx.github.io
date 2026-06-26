@@ -1,7 +1,4 @@
-/* ==========================
-   MENU MOVIL
-========================== */
-
+```js
 const menuBtn = document.querySelector(".menu-btn");
 const navLinks = document.querySelector(".nav-links");
 
@@ -15,10 +12,6 @@ if(menuBtn){
 
 }
 
-/* ==========================
-   CERRAR MENU AL HACER CLICK
-========================== */
-
 document.querySelectorAll(".nav-links a").forEach(link=>{
 
     link.addEventListener("click",()=>{
@@ -28,10 +21,6 @@ document.querySelectorAll(".nav-links a").forEach(link=>{
     });
 
 });
-
-/* ==========================
-   NAVBAR AL HACER SCROLL
-========================== */
 
 const navbar = document.querySelector(".navbar");
 
@@ -49,10 +38,6 @@ window.addEventListener("scroll",()=>{
     }
 
 });
-
-/* ==========================
-   CONTADORES HERO
-========================== */
 
 const counters = document.querySelectorAll(".counter");
 
@@ -114,10 +99,6 @@ window.addEventListener("scroll",()=>{
 
 });
 
-/* ==========================
-   ANIMACIONES AL HACER SCROLL
-========================== */
-
 const observer = new IntersectionObserver(
 
 (entries)=>{
@@ -159,63 +140,6 @@ document.querySelectorAll(
 
 });
 
-/* ==========================
-   BOTON VOLVER ARRIBA
-========================== */
-
-const backToTop =
-document.createElement("button");
-
-backToTop.className =
-"back-to-top";
-
-backToTop.innerHTML = "↑";
-
-document.body.appendChild(
-backToTop
-);
-
-window.addEventListener(
-"scroll",
-()=>{
-
-    if(window.scrollY > 500){
-
-        backToTop.classList.add(
-        "visible"
-        );
-
-    }
-    else{
-
-        backToTop.classList.remove(
-        "visible"
-        );
-
-    }
-
-}
-);
-
-backToTop.addEventListener(
-"click",
-()=>{
-
-    window.scrollTo({
-
-        top:0,
-
-        behavior:"smooth"
-
-    });
-
-}
-);
-
-/* ==========================
-   EFECTO PARALLAX HERO
-========================== */
-
 const hero =
 document.querySelector(".hero");
 
@@ -232,10 +156,6 @@ window.addEventListener(
 
 }
 );
-
-/* ==========================
-   HOVER DINAMICO TARJETAS
-========================== */
 
 document.querySelectorAll(
 `
@@ -281,10 +201,6 @@ document.querySelectorAll(
 
 });
 
-/* ==========================
-   MAPA INTERACTIVO
-========================== */
-
 document.querySelectorAll(
 ".coverage-points span"
 ).forEach(region=>{
@@ -308,10 +224,6 @@ document.querySelectorAll(
     });
 
 });
-
-/* ==========================
-   SCROLL SUAVE INTERNO
-========================== */
 
 document.querySelectorAll(
 'a[href^="#"]'
@@ -343,10 +255,6 @@ document.querySelectorAll(
 
 });
 
-/* ==========================
-   PRELOADER OPCIONAL
-========================== */
-
 window.addEventListener(
 "load",
 ()=>{
@@ -371,23 +279,4 @@ window.addEventListener(
     }
 
 });
-
-/* ==========================
-   FUTURAS EXTENSIONES
-========================== */
-
-/*
-- Integración con Leaflet.js
-  para mapa mundial interactivo.
-
-- Integración con Swiper.js
-  para sliders corporativos.
-
-- Formularios conectados
-  con EmailJS o backend propio.
-
-- Dashboard comercial
-  para distribuidores.
-
-- Portal B2B para clientes.
-*/
+```
