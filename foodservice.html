@@ -1,15 +1,395 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Foodservice - FROUND</title>
-
-<link rel="stylesheet" href="style.css">
+<title>FROUND Foodservice</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+:root{
+--green:#2E5E2B;
+--green-light:#7AB648;
+--dark:#171717;
+--text:#5f5f5f;
+--border:#e9e9e9;
+--shadow:0 12px 30px rgba(0,0,0,.06);
+}
+
+html{
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#fff;
+color:#222;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+
+img{
+width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+}
+
+/* NAVBAR */
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:74px;
+padding:0 34px;
+display:flex;
+align-items:center;
+background:white;
+border-bottom:1px solid #ececec;
+z-index:9999;
+box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+.logo{
+display:flex;
+flex-direction:column;
+line-height:1;
+z-index:2;
+}
+
+.logo h1{
+font-size:24px;
+font-weight:800;
+color:var(--green);
+margin-bottom:4px;
+letter-spacing:1px;
+}
+
+.logo span{
+font-size:10px;
+color:#777;
+}
+
+nav{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+nav a{
+position:relative;
+font-size:12px;
+font-weight:600;
+color:#222;
+padding:4px 0;
+transition:.18s ease;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:var(--green-light);
+transition:.18s ease;
+}
+
+nav a:hover{
+color:var(--green);
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.contact-btn{
+margin-left:auto;
+height:38px;
+padding:0 14px;
+background:#2E5E2B;
+color:white;
+border:none;
+border-radius:6px;
+font-size:11px;
+font-weight:700;
+white-space:nowrap;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:160px;
+transition:.16s ease;
+z-index:2;
+}
+
+.contact-btn:hover{
+background:#244b22;
+transform:translateY(-2px);
+}
+
+/* HERO */
+.foodservice-hero{
+position:relative;
+min-height:78vh;
+display:flex;
+align-items:center;
+padding:120px 70px 80px;
+background:
+url('https://media.gazetadopovo.com.br/2021/08/04175303/hobi-industri-8DV-bFgI6sE-unsplash.jpg')
+center/cover;
+overflow:hidden;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(115deg, rgba(0,0,0,.86), rgba(0,0,0,.45));
+}
+
+.foodservice-hero-content{
+position:relative;
+z-index:2;
+max-width:760px;
+animation:fadeUp .8s ease;
+}
+
+.tag{
+display:inline-flex;
+padding:10px 16px;
+background:rgba(255,255,255,.12);
+border-radius:100px;
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+color:#fff;
+margin-bottom:28px;
+}
+
+.foodservice-hero-content h2{
+font-size:74px;
+line-height:.92;
+font-weight:800;
+letter-spacing:-3px;
+color:white;
+margin-bottom:28px;
+}
+
+.foodservice-hero-content p{
+font-size:17px;
+line-height:1.9;
+color:#ededed;
+max-width:620px;
+}
+
+/* INTRO */
+.intro{
+padding:90px 70px;
+display:flex;
+justify-content:space-between;
+gap:50px;
+align-items:center;
+}
+
+.intro-left{
+max-width:650px;
+}
+
+.intro-left h2{
+font-size:48px;
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:24px;
+color:var(--dark);
+}
+
+.intro-left p{
+font-size:16px;
+line-height:1.9;
+color:var(--text);
+}
+
+.intro-right{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.intro-card{
+width:180px;
+padding:30px;
+border:1px solid var(--border);
+border-radius:18px;
+background:white;
+transition:.2s ease;
+}
+
+.intro-card:hover{
+transform:translateY(-6px);
+box-shadow:var(--shadow);
+}
+
+.intro-card h3{
+font-size:40px;
+font-weight:800;
+color:var(--green);
+margin-bottom:10px;
+}
+
+.intro-card span{
+font-size:13px;
+font-weight:600;
+color:#444;
+line-height:1.6;
+}
+
+/* PRODUCTS */
+.products-section{
+padding:90px 70px;
+background:#fafafa;
+}
+
+.products-section h2{
+font-size:48px;
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:50px;
+color:var(--dark);
+}
+
+.products-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:26px;
+}
+
+.product-card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+border:1px solid #ececec;
+transition:.22s ease;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+box-shadow:0 16px 35px rgba(0,0,0,.08);
+}
+
+.product-card img{
+height:240px;
+object-fit:cover;
+}
+
+.product-info{
+padding:28px;
+}
+
+.product-info h3{
+font-size:25px;
+font-weight:700;
+margin-bottom:14px;
+}
+
+.product-info p{
+font-size:14px;
+line-height:1.8;
+color:var(--text);
+margin-bottom:24px;
+}
+
+.product-info a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:44px;
+padding:0 22px;
+background:var(--green);
+color:white;
+font-size:13px;
+font-weight:600;
+border-radius:8px;
+transition:.18s ease;
+}
+
+.product-info a:hover{
+background:#244b22;
+transform:translateY(-2px);
+}
+
+/* FOOTER */
+footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:50px 70px;
+background:#111;
+}
+
+.footer-logo h2{
+font-size:28px;
+margin-bottom:10px;
+color:white;
+}
+
+.footer-logo span{
+font-size:13px;
+color:#bdbdbd;
+}
+
+.footer-info{
+text-align:right;
+}
+
+.footer-info p{
+font-size:14px;
+line-height:1.9;
+color:#d2d2d2;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+/* RESPONSIVE */
+@media(max-width:1200px){
+.products-grid{grid-template-columns:repeat(2,1fr);}
+.intro{flex-direction:column;align-items:flex-start;}
+}
+
+@media(max-width:768px){
+.foodservice-hero{padding:180px 24px 70px;}
+.foodservice-hero-content h2{font-size:42px;}
+.intro,.products-section{padding:70px 24px;}
+.products-grid{grid-template-columns:1fr;}
+.intro-card{width:100%;}
+footer{flex-direction:column;gap:28px;text-align:center;}
+.footer-info{text-align:center;}
+}
+
+</style>
 
 </head>
 
@@ -24,545 +404,155 @@
 
 <nav>
 <a href="index.html">Inicio</a>
-<a href="#">Nosotros</a>
-<a href="#">Tecnología</a>
-<a href="#">Contacto</a>
+<a href="#foodservice">Foodservice</a>
+<a href="#productos">Productos</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
-<button class="contact-btn">
-Contactar equipo comercial
-</button>
+<button class="contact-btn">Equipo comercial</button>
 
 </header>
 
-<!-- HERO -->
+<section class="foodservice-hero" id="foodservice">
 
-<section class="retail-hero"
-style="background-image:url('https://images.unsplash.com/photo-1556911220-bff31c812dba');">
+<div class="overlay"></div>
 
-<div class="retail-overlay"></div>
+<div class="foodservice-hero-content">
 
-<div class="retail-content">
-
-<span class="small-title">
-FOODSERVICE · DISTRIBUCIÓN · INSTITUCIONAL
-</span>
-
-<h1>
-SOLUCIONES IQF
-PARA OPERACIONES
-DE ALTO VOLUMEN
-</h1>
-
-<p>
-Vegetales congelados diseñados para hoteles,
-restaurantes, hospitales, distribuidores y
-programas institucionales internacionales.
-</p>
-
-<div class="retail-buttons">
-
-<button class="primary-btn">
-Descargar catálogo institucional
-</button>
-
-<button class="secondary-btn">
-Solicitar especificaciones técnicas
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- INTRO -->
-
-<section class="retail-intro">
-
-<div class="retail-intro-left">
+<span class="tag">LÍNEA FOODSERVICE</span>
 
 <h2>
-Formatos institucionales
-para máxima eficiencia
-operativa
+SOLUCIONES PARA<br>
+COCINAS INDUSTRIALES
 </h2>
 
 <p>
-Nuestra línea foodservice fue desarrollada
-para operaciones de gran volumen que requieren
-consistencia lote a lote, estabilidad logística
-y disponibilidad continua.
+Productos diseñados para el sector alimentario profesional,
+optimizando tiempos de preparación con consistencia lote a lote.
 </p>
+
+</div>
+
+</section>
+
+<section class="intro">
+
+<div class="intro-left">
+
+<h2>Portafolio foodservice profesional</h2>
 
 <p>
-Todos los productos son procesados mediante
-tecnología IQF para preservar calidad,
-textura y valor nutricional.
+Nuestra línea foodservice está diseñada para cocinas industriales,
+hoteles, hospitales, programas de alimentación escolar y mayoristas
+que requieren consistencia lote a lote y eficiencia operativa.
 </p>
 
 </div>
 
-<div class="retail-intro-right">
+<div class="intro-right">
 
-<div class="info-box">
-<h3>5 LB</h3>
-<span>Formato institucional</span>
+<div class="intro-card">
+<h3>+8</h3>
+<span>Productos base</span>
 </div>
 
-<div class="info-box">
-<h3>24</h3>
-<span>Meses de vida útil</span>
+<div class="intro-card">
+<h3>IQF</h3>
+<span>Tecnología congelada</span>
 </div>
 
-<div class="info-box">
-<h3>-18°C</h3>
-<span>Cadena de frío continua</span>
+<div class="intro-card">
+<h3>VOL</h3>
+<span>Diseñada para volumen</span>
 </div>
 
 </div>
 
 </section>
 
-<!-- PRODUCTOS -->
-
-<section class="retail-products">
+<section class="products-section" id="productos">
 
 <h2>PORTAFOLIO FOODSERVICE</h2>
 
-<div class="retail-grid">
+<div class="products-grid">
 
-<!-- PRODUCTO 1 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e">
-
-<div class="retail-product-info">
-
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1615484477778-ca3b77940c25?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
 <h3>Maíz Cortado</h3>
-
-<p>
-Producto IQF para hoteles, catering
-y cocinas industriales de gran escala.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>5 LB</span>
+<p>Producto IQF listo para cocinas industriales.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-<div>
-<strong>Mercado</strong>
-<span>Institucional</span>
-</div>
-
-<div>
-<strong>Vida útil</strong>
-<span>24 meses</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 2 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999">
-
-<div class="retail-product-info">
-
-<h3>Ejotes Cortados</h3>
-
-<p>
-Vegetales seleccionados para operaciones
-foodservice y distribución institucional.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>IQF</strong>
-<span>Premium</span>
-</div>
-
-<div>
-<strong>Cadena frío</strong>
-<span>-18°C</span>
-</div>
-
-<div>
-<strong>Formato</strong>
-<span>5 LB</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 3 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655">
-
-<div class="retail-product-info">
-
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1582515073490-39981397c445?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
 <h3>Guisantes Verdes</h3>
-
-<p>
-Vegetales IQF con excelente rendimiento
-para operadores institucionales.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Natural</strong>
-<span>100%</span>
+<p>Calidad uniforme para uso profesional.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-<div>
-<strong>Foodservice</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>FDA</strong>
-<span>Compliant</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 4 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1582515073490-39981397c445">
-
-<div class="retail-product-info">
-
-<h3>Arvejas Partidas</h3>
-
-<p>
-Formato a granel para programas
-alimentarios y distribuidores.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Presentación</strong>
-<span>5 LB</span>
-</div>
-
-<div>
-<strong>Exportación</strong>
-<span>Global</span>
-</div>
-
-<div>
-<strong>Calidad</strong>
-<span>Premium</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 5 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1542838132-92c53300491e">
-
-<div class="retail-product-info">
-
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1604908554027-0b4a2c5f1a9d?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
 <h3>Mezcla 5 Vías</h3>
-
-<p>
-Combinación de vegetales diseñada
-para operaciones de alto rendimiento.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>Institucional</span>
+<p>Mix industrial de vegetales congelados.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-<div>
-<strong>IQF</strong>
-<span>Premium</span>
-</div>
-
-<div>
-<strong>Uso</strong>
-<span>Foodservice</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 6 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999">
-
-<div class="retail-product-info">
-
-<h3>Mezcla California</h3>
-
-<p>
-Brócoli, zanahoria y coliflor
-congelados individualmente.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>IQF</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>Cadena frío</strong>
-<span>-18°C</span>
-</div>
-
-<div>
-<strong>Institucional</strong>
-<span>Sí</span>
-</div>
-
-</div>
-
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 7 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655">
-
-<div class="retail-product-info">
-
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
 <h3>Okra Entera</h3>
-
-<p>
-Producto premium diseñado para
-exportación institucional.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>5 LB</span>
+<p>Seleccionada para procesos industriales.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-<div>
-<strong>Mercado</strong>
-<span>Foodservice</span>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1604908177090-3d9b0a1d0c12?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
+<h3>Ejotes Cortados</h3>
+<p>Listos para preparación rápida.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-<div>
-<strong>FDA</strong>
-<span>Aprobado</span>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1604908553983-1c3f1a2b3c4d?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
+<h3>Arvejas Partidas</h3>
+<p>Ingrediente base para cocina industrial.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
+<h3>Mezcla California</h3>
+<p>Mix clásico para foodservice.</p>
+<a href="#">Ver especificaciones</a>
+</div>
 </div>
 
-
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1604908177225-0c5c0c5f8a3a?q=80&w=1200&auto=format&fit=crop">
+<div class="product-info">
+<h3>Glandules</h3>
+<p>Producto especializado para industria.</p>
+<a href="#">Ver especificaciones</a>
 </div>
-
-</div>
-
-<!-- PRODUCTO 8 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
-
-<div class="retail-product-info">
-
-<h3>Gandules</h3>
-
-<p>
-Vegetal IQF para distribuidores,
-instituciones y mercados latinos.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Vida útil</strong>
-<span>24 meses</span>
-</div>
-
-<div>
-<strong>Formato</strong>
-<span>Institucional</span>
-</div>
-
-<div>
-<strong>Cadena frío</strong>
-<span>-18°C</span>
-</div>
-
-</div>
-
-
-</div>
-
 </div>
 
 </div>
 
 </section>
 
-<!-- TECNOLOGÍA -->
-
-<section class="retail-tech">
-
-<div class="retail-tech-image">
-
-<img src="https://images.unsplash.com/photo-1573246123716-6b1782bfc499">
-
-</div>
-
-<div class="retail-tech-content">
-
-<span class="small-title">
-TECNOLOGÍA IQF
-</span>
-
-<h2>
-Consistencia y
-seguridad alimentaria
-en cada lote
-</h2>
-
-<p>
-Nuestros procesos garantizan estabilidad
-operativa, control microbiológico y
-trazabilidad completa desde origen
-hasta destino final.
-</p>
-
-<div class="tech-benefits">
-
-<div class="benefit">
-✔ HACCP y FDA compliant
-</div>
-
-<div class="benefit">
-✔ Procesamiento IQF premium
-</div>
-
-<div class="benefit">
-✔ Trazabilidad documentada
-</div>
-
-<div class="benefit">
-✔ Disponibilidad continua
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- TABLA -->
-
-<section class="retail-table">
-
-<h2>ESPECIFICACIONES GENERALES</h2>
-
-<table>
-
-<tr>
-<th>Característica</th>
-<th>Detalle</th>
-</tr>
-
-<tr>
-<td>Formato institucional</td>
-<td>5 LB / 2.27 kg</td>
-</tr>
-
-<tr>
-<td>Temperatura</td>
-<td>≤ -18°C</td>
-</tr>
-
-<tr>
-<td>Vida útil</td>
-<td>24 meses</td>
-</tr>
-
-<tr>
-<td>Mercados</td>
-<td>Foodservice · Hoteles · Hospitales</td>
-</tr>
-
-<tr>
-<td>Certificaciones</td>
-<td>FDA · HACCP · BRCGS</td>
-</tr>
-
-</table>
-
-</section>
-
-<!-- CTA -->
-
-<section class="retail-cta">
-
-<h2>
-Optimice su operación con FROUND
-</h2>
-
-<p>
-Solicite especificaciones técnicas,
-MOQ y soluciones institucionales personalizadas.
-</p>
-
-<button>
-Contactar equipo comercial
-</button>
-
-</section>
-
-<footer>
+<footer id="contacto">
 
 <div class="footer-logo">
 <h2>FROUND</h2>
@@ -570,7 +560,7 @@ Contactar equipo comercial
 </div>
 
 <div class="footer-info">
-<p>info@fround.com</p>
+<p>foodservice@fround.com</p>
 <p>+57 300 000 0000</p>
 <p>Barranquilla, Colombia</p>
 </div>
