@@ -1,15 +1,492 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retail - FROUND</title>
-
-<link rel="stylesheet" href="style.css">
+<title>FROUND Retail</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
+}
+
+:root{
+--green:#2E5E2B;
+--green-light:#7AB648;
+--dark:#171717;
+--text:#5f5f5f;
+--border:#e9e9e9;
+--shadow:0 12px 30px rgba(0,0,0,.06);
+}
+
+html{
+scroll-behavior:smooth;
+overflow-x:hidden;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:#fff;
+color:#222;
+overflow-x:hidden;
+-webkit-font-smoothing:antialiased;
+}
+
+img{
+width:100%;
+display:block;
+}
+
+a{
+text-decoration:none;
+}
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:74px;
+padding:0 34px;
+display:flex;
+align-items:center;
+background:white;
+border-bottom:1px solid #ececec;
+z-index:9999;
+box-shadow:0 2px 10px rgba(0,0,0,0.04);
+}
+
+.logo{
+display:flex;
+flex-direction:column;
+line-height:1;
+z-index:2;
+}
+
+.logo h1{
+font-size:24px;
+font-weight:800;
+color:var(--green);
+margin-bottom:4px;
+letter-spacing:1px;
+}
+
+.logo span{
+font-size:10px;
+color:#777;
+}
+
+nav{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+nav a{
+position:relative;
+font-size:12px;
+font-weight:600;
+color:#222;
+padding:4px 0;
+transition:.18s ease;
+}
+
+nav a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:0;
+width:0%;
+height:2px;
+background:var(--green-light);
+transition:.18s ease;
+}
+
+nav a:hover{
+color:var(--green);
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.contact-btn{
+margin-left:auto;
+height:38px;
+padding:0 14px;
+background:#2E5E2B;
+color:white;
+border:none;
+border-radius:6px;
+font-size:11px;
+font-weight:700;
+white-space:nowrap;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+min-width:160px;
+transition:.16s ease;
+z-index:2;
+}
+
+.contact-btn:hover{
+background:#244b22;
+transform:translateY(-2px);
+}
+
+.retail-hero{
+position:relative;
+min-height:78vh;
+display:flex;
+align-items:center;
+padding:120px 70px 80px;
+background:
+url('https://images.unsplash.com/photo-1542838132-92c53300491e?q=80&w=1800&auto=format&fit=crop')
+center/cover;
+overflow:hidden;
+}
+
+.overlay{
+position:absolute;
+inset:0;
+background:
+linear-gradient(
+115deg,
+rgba(0,0,0,.86),
+rgba(0,0,0,.45)
+);
+}
+
+.retail-hero-content{
+position:relative;
+z-index:2;
+max-width:760px;
+animation:fadeUp .8s ease;
+}
+
+.retail-tag{
+display:inline-flex;
+padding:10px 16px;
+background:rgba(255,255,255,.12);
+border-radius:100px;
+font-size:12px;
+font-weight:700;
+letter-spacing:1px;
+color:#fff;
+margin-bottom:28px;
+}
+
+.retail-hero-content h2{
+font-size:74px;
+line-height:.92;
+font-weight:800;
+letter-spacing:-3px;
+color:white;
+margin-bottom:28px;
+}
+
+.retail-hero-content p{
+font-size:17px;
+line-height:1.9;
+color:#ededed;
+max-width:620px;
+}
+
+.retail-intro{
+padding:90px 70px;
+display:flex;
+justify-content:space-between;
+gap:50px;
+align-items:center;
+background:#fff;
+}
+
+.intro-left{
+max-width:650px;
+}
+
+.intro-left h2{
+font-size:48px;
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:24px;
+color:var(--dark);
+}
+
+.intro-left p{
+font-size:16px;
+line-height:1.9;
+color:var(--text);
+}
+
+.intro-right{
+display:flex;
+gap:18px;
+flex-wrap:wrap;
+}
+
+.intro-card{
+width:180px;
+padding:30px;
+border:1px solid var(--border);
+border-radius:18px;
+background:white;
+transition:.2s ease;
+}
+
+.intro-card:hover{
+transform:translateY(-6px);
+box-shadow:var(--shadow);
+}
+
+.intro-card h3{
+font-size:40px;
+font-weight:800;
+color:var(--green);
+margin-bottom:10px;
+}
+
+.intro-card span{
+font-size:13px;
+font-weight:600;
+color:#444;
+line-height:1.6;
+}
+
+.products-section{
+padding:90px 70px;
+background:#fafafa;
+}
+
+.products-section h2{
+font-size:48px;
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:50px;
+color:var(--dark);
+}
+
+.products-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:26px;
+}
+
+.product-card{
+background:white;
+border-radius:22px;
+overflow:hidden;
+border:1px solid #ececec;
+transition:.22s ease;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+box-shadow:0 16px 35px rgba(0,0,0,.08);
+}
+
+.product-card img{
+height:240px;
+object-fit:cover;
+}
+
+.product-info{
+padding:28px;
+}
+
+.product-info h3{
+font-size:25px;
+font-weight:700;
+margin-bottom:14px;
+color:#222;
+}
+
+.product-info p{
+font-size:14px;
+line-height:1.8;
+color:var(--text);
+margin-bottom:24px;
+}
+
+.product-info a{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+height:44px;
+padding:0 22px;
+background:var(--green);
+color:white;
+font-size:13px;
+font-weight:600;
+border-radius:8px;
+transition:.18s ease;
+}
+
+.product-info a:hover{
+background:#244b22;
+transform:translateY(-2px);
+}
+
+footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:50px 70px;
+background:#111;
+}
+
+.footer-logo h2{
+font-size:28px;
+margin-bottom:10px;
+color:white;
+}
+
+.footer-logo span{
+font-size:13px;
+color:#bdbdbd;
+}
+
+.footer-info{
+text-align:right;
+}
+
+.footer-info p{
+font-size:14px;
+line-height:1.9;
+color:#d2d2d2;
+}
+
+@keyframes fadeUp{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+@media(max-width:1200px){
+
+.products-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.retail-intro{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
+
+@media(max-width:992px){
+
+.navbar{
+height:auto;
+padding:16px 24px;
+flex-direction:column;
+gap:16px;
+}
+
+nav{
+position:static;
+transform:none;
+flex-wrap:wrap;
+justify-content:center;
+gap:14px;
+}
+
+.contact-btn{
+width:100%;
+max-width:260px;
+margin:0;
+}
+
+.retail-hero{
+padding:170px 40px 80px;
+}
+
+.retail-hero-content h2{
+font-size:56px;
+}
+
+.retail-intro,
+.products-section{
+padding:80px 40px;
+}
+
+}
+
+@media(max-width:768px){
+
+.retail-hero{
+padding:180px 24px 70px;
+min-height:auto;
+}
+
+.retail-hero-content h2{
+font-size:40px;
+letter-spacing:-1px;
+}
+
+.retail-hero-content p{
+font-size:15px;
+}
+
+.retail-intro,
+.products-section{
+padding:70px 24px;
+}
+
+.intro-left h2,
+.products-section h2{
+font-size:34px;
+}
+
+.products-grid{
+grid-template-columns:1fr;
+}
+
+.intro-right{
+width:100%;
+}
+
+.intro-card{
+width:100%;
+}
+
+footer{
+flex-direction:column;
+gap:28px;
+text-align:center;
+padding:45px 24px;
+}
+
+.footer-info{
+text-align:center;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -23,484 +500,275 @@
 
 <nav>
 <a href="index.html">Inicio</a>
-<a href="#">Nosotros</a>
-<a href="#">Tecnología</a>
-<a href="#">Contacto</a>
+<a href="#retail">Retail</a>
+<a href="#productos">Productos</a>
+<a href="#contacto">Contacto</a>
 </nav>
 
 <button class="contact-btn">
-Contactar equipo comercial
+Equipo comercial
 </button>
 
 </header>
 
-<!-- HERO -->
+<section class="retail-hero" id="retail">
 
-<section class="retail-hero">
+<div class="overlay"></div>
 
-<div class="retail-overlay"></div>
+<div class="retail-hero-content">
 
-<div class="retail-content">
-
-<span class="small-title">
-SUPERMERCADOS · RETAIL · FARMACIAS
+<span class="retail-tag">
+LÍNEA RETAIL
 </span>
 
-<h1>
-LÍNEA RETAIL IQF
-PARA MERCADOS
-INTERNACIONALES
-</h1>
-
-<p>
-Productos premium listos para anaquel,
-desarrollados para cadenas comerciales,
-distribuidores y supermercados internacionales.
-</p>
-
-<div class="retail-buttons">
-
-<button class="primary-btn">
-Descargar catálogo
-</button>
-
-<button class="secondary-btn">
-Solicitar fichas técnicas
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- INTRO -->
-
-<section class="retail-intro">
-
-<div class="retail-intro-left">
-
 <h2>
-Vegetales IQF listos
-para distribución retail
+PRODUCTOS DISEÑADOS
+PARA SUPERMERCADOS
+Y CONSUMO MASIVO
 </h2>
 
 <p>
-Nuestra línea retail combina tecnología IQF,
-empaque bilingüe y estándares internacionales
-de inocuidad alimentaria para garantizar
-consistencia en cada lote.
+Soluciones alimentarias desarrolladas
+para cadenas comerciales, distribuidores
+y mercados internacionales con altos
+estándares de calidad.
 </p>
+
+</div>
+
+</section>
+
+<section class="retail-intro">
+
+<div class="intro-left">
+
+<h2>
+Portafolio retail internacional
+</h2>
 
 <p>
-Diseñada para supermercados, cadenas
-internacionales y mercados hispanos.
+Nuestra línea retail está orientada
+a supermercados, autoservicios y
+cadenas comerciales que buscan
+productos confiables, estandarizados
+y listos para distribución.
 </p>
 
 </div>
 
-<div class="retail-intro-right">
+<div class="intro-right">
 
-<div class="info-box">
-<h3>32 oz</h3>
-<span>Presentación retail</span>
+<div class="intro-card">
+<h3>+9</h3>
+<span>Productos retail</span>
 </div>
 
-<div class="info-box">
-<h3>24</h3>
-<span>Meses de vida útil</span>
+<div class="intro-card">
+<h3>24M</h3>
+<span>Vida útil máxima</span>
 </div>
 
-<div class="info-box">
-<h3>100%</h3>
-<span>Trazabilidad documentada</span>
+<div class="intro-card">
+<h3>IQF</h3>
+<span>Tecnología avanzada</span>
 </div>
 
 </div>
 
 </section>
 
-<!-- PRODUCTOS -->
+<section class="products-section" id="productos">
 
-<section class="retail-products">
+<h2>
+PORTAFOLIO RETAIL
+</h2>
 
-<h2>NUESTROS PRODUCTOS</h2>
+<div class="products-grid">
 
-<div class="retail-grid">
+<div class="product-card">
 
-<!-- PRODUCTO 1 -->
+<img src="maiz-dulce.jpg" alt ="Maíz Dulce">
 
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1603048297172-c92544798d5a">
-
-<div class="retail-product-info">
+<div class="product-info">
 
 <h3>Maíz Dulce</h3>
 
 <p>
-Maíz IQF premium con excelente textura,
-color natural brillante y sabor fresco.
+Maíz premium congelado IQF orientado
+a supermercados y retail internacional.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>32 oz</span>
-</div>
-
-<div>
-<strong>Vida útil</strong>
-<span>24 meses</span>
-</div>
-
-<div>
-<strong>Empaque</strong>
-<span>Bilingüe</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/maiz-dulce.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
 </div>
 
-<!-- PRODUCTO 2 -->
+<div class="product-card">
 
-<div class="retail-product">
+<img src="https://images.unsplash.com/photo-1603048719539-9ecb4f4b0a71?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655">
-
-<div class="retail-product-info">
-
-<h3>Guisantes y Zanahorias</h3>
-
-<p>
-Mezcla clásica IQF diseñada para retail
-y distribución internacional.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>IQF</strong>
-<span>Premium</span>
-</div>
-
-<div>
-<strong>Natural</strong>
-<span>100%</span>
-</div>
-
-<div>
-<strong>Mercado</strong>
-<span>Retail</span>
-</div>
-
-</div>
-
-<button>
-Ver especificaciones
-</button>
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 3 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999">
-
-<div class="retail-product-info">
-
-<h3>Guisantes Verdes</h3>
-
-<p>
-Vegetales seleccionados y congelados
-individualmente para máxima frescura.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Gluten Free</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>Vegan</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>Certificación</strong>
-<span>FDA</span>
-</div>
-
-</div>
-
-<button>
-Ver especificaciones
-</button>
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 4 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1519996529931-28324d5a630e">
-
-<div class="retail-product-info">
-
-<h3>Maíz en Trozos</h3>
-
-<p>
-Segmentos premium listos para
-mercados foodservice y retail.
-</p>
-
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>IQF</span>
-</div>
-
-<div>
-<strong>Calidad</strong>
-<span>Exportación</span>
-</div>
-
-<div>
-<strong>Origen</strong>
-<span>Colombia</span>
-</div>
-
-</div>
-
-<button>
-Ver especificaciones
-</button>
-
-</div>
-
-</div>
-
-<!-- PRODUCTO 5 -->
-
-<div class="retail-product">
-
-<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999">
-
-<div class="retail-product-info">
+<div class="product-info">
 
 <h3>Vegetales Mixtos</h3>
 
 <p>
-Combinación premium para supermercados,
-retail y distribución institucional.
+Mezcla premium de vegetales congelados
+para cadenas comerciales y exportación.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Empaque</strong>
-<span>Retail</span>
-</div>
-
-<div>
-<strong>Vida útil</strong>
-<span>24 meses</span>
-</div>
-
-<div>
-<strong>Cadena frío</strong>
-<span>-18°C</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/vegetales-mixtos.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
 </div>
 
-<!-- PRODUCTO 6 -->
+<div class="product-card">
 
-<div class="retail-product">
+<img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1542838132-92c53300491e">
+<div class="product-info">
 
-<div class="retail-product-info">
+<h3>Guisantes y Zanahorias</h3>
+
+<p>
+Combinación lista para retail con
+procesamiento bajo estándares IQF.
+</p>
+
+<a href="specs-retail/guisantes-zanahorias.html">
+Ver especificaciones
+</a>
+
+</div>
+
+</div>
+
+<div class="product-card">
+
+<img src="https://images.unsplash.com/photo-1582515073490-39981397c445?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
+
+<h3>Guisantes Verdes</h3>
+
+<p>
+Guisantes seleccionados con textura
+y conservación óptima para exportación.
+</p>
+
+<a href="specs-retail/guisantes-verdes.html">
+Ver especificaciones
+</a>
+
+</div>
+
+</div>
+
+<div class="product-card">
+
+<img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
+
+<h3>Maíz en Trozos</h3>
+
+<p>
+Producto congelado listo para
+consumo y distribución comercial.
+</p>
+
+<a href="specs-retail/maiz-en-trozos.html">
+Ver especificaciones
+</a>
+
+</div>
+
+</div>
+
+<div class="product-card">
+
+<img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=1200&auto=format&fit=crop">
+
+<div class="product-info">
 
 <h3>Mezcla California</h3>
 
 <p>
-Brócoli, zanahoria y coliflor
-congelados individualmente.
+Mezcla vegetal premium para cadenas
+retail y supermercados internacionales.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Natural</strong>
-<span>100%</span>
-</div>
-
-<div>
-<strong>IQF</strong>
-<span>Premium</span>
-</div>
-
-<div>
-<strong>Retail</strong>
-<span>Internacional</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/mezcla-california.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
 </div>
 
-<!-- PRODUCTO 7 -->
+<div class="product-card">
 
-<div class="retail-product">
+<img src="https://images.unsplash.com/photo-1594282486552-05a0c7073fc5?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1582515073490-39981397c445">
-
-<div class="retail-product-info">
+<div class="product-info">
 
 <h3>Okra Cortada</h3>
 
 <p>
-Producto premium seleccionado
-para exportación y retail internacional.
+Okra procesada y congelada con
+calidad orientada a exportación.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Presentación</strong>
-<span>32 oz</span>
-</div>
-
-<div>
-<strong>Non GMO</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>FDA</strong>
-<span>Aprobado</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/okra-cortada.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
 </div>
 
-<!-- PRODUCTO 8 -->
+<div class="product-card">
 
-<div class="retail-product">
+<img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655">
-
-<div class="retail-product-info">
+<div class="product-info">
 
 <h3>Okra Entera</h3>
 
 <p>
-Vegetal IQF con textura firme
-y excelente rendimiento culinario.
+Producto seleccionado bajo estrictos
+procesos de calidad e inocuidad.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Congelación</strong>
-<span>IQF</span>
-</div>
-
-<div>
-<strong>Vegan</strong>
-<span>Sí</span>
-</div>
-
-<div>
-<strong>Mercado</strong>
-<span>Retail</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/okra-entera.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
 </div>
 
-<!-- PRODUCTO 9 -->
+<div class="product-card">
 
-<div class="retail-product">
+<img src="https://images.unsplash.com/photo-1508747703725-719777637510?q=80&w=1200&auto=format&fit=crop">
 
-<img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc">
-
-<div class="retail-product-info">
+<div class="product-info">
 
 <h3>Cebolla Picada</h3>
 
 <p>
-Corte uniforme IQF diseñado
-para supermercados y foodservice.
+Cebolla congelada IQF lista para
+retail y distribución alimentaria.
 </p>
 
-<div class="product-specs">
-
-<div>
-<strong>Formato</strong>
-<span>32 oz</span>
-</div>
-
-<div>
-<strong>Textura</strong>
-<span>Premium</span>
-</div>
-
-<div>
-<strong>Empaque</strong>
-<span>Bilingüe</span>
-</div>
-
-</div>
-
-<button>
+<a href="specs-retail/cebolla-picada.html">
 Ver especificaciones
-</button>
+</a>
 
 </div>
 
@@ -510,78 +778,24 @@ Ver especificaciones
 
 </section>
 
-<!-- TABLA -->
-
-<section class="retail-table">
-
-<h2>ESPECIFICACIONES GENERALES</h2>
-
-<table>
-
-<tr>
-<th>Característica</th>
-<th>Detalle</th>
-</tr>
-
-<tr>
-<td>Presentación</td>
-<td>32 oz / 907 g</td>
-</tr>
-
-<tr>
-<td>Temperatura</td>
-<td>≤ -18°C</td>
-</tr>
-
-<tr>
-<td>Vida útil</td>
-<td>24 meses</td>
-</tr>
-
-<tr>
-<td>Certificaciones</td>
-<td>FDA · HACCP · BRCGS</td>
-</tr>
-
-<tr>
-<td>Etiquetado</td>
-<td>Bilingüe inglés/español</td>
-</tr>
-
-</table>
-
-</section>
-
-<!-- CTA -->
-
-<section class="retail-cta">
-
-<h2>
-¿Listo para distribuir productos FROUND?
-</h2>
-
-<p>
-Solicita catálogo completo, fichas técnicas
-y propuesta comercial personalizada.
-</p>
-
-<button>
-Contactar equipo comercial
-</button>
-
-</section>
-
-<footer>
+<footer id="contacto">
 
 <div class="footer-logo">
+
 <h2>FROUND</h2>
-<span>Foods Around The World</span>
+
+<span>
+Foods Around The World
+</span>
+
 </div>
 
 <div class="footer-info">
+
 <p>info@fround.com</p>
 <p>+57 300 000 0000</p>
 <p>Barranquilla, Colombia</p>
+
 </div>
 
 </footer>
